@@ -55,14 +55,19 @@ public class MemoryCandidateRepository implements CandidateRepository {
     }
 
     @Override
-    public void deleteById(int id) {
-        candidates.remove(id);
+    public boolean deleteById(int id) {
+        if (candidates.containsKey(id)) {
+            candidates.remove(id);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public boolean update(Candidate candidate) {
         return candidates.computeIfPresent(candidate.getId(),
-                (id, oldVacancy) -> new Candidate(oldVacancy.getId(),
+                (id, oldCandidate) -> new Candidate(oldCandidate.getId(),
                         candidate.getName(),
                         candidate.getDescription(),
                         candidate.getCreationDate())) != null;
