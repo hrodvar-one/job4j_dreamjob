@@ -9,7 +9,7 @@ public interface CandidateService {
 
     Candidate save(Candidate candidate);
 
-    void deleteById(int id);
+    boolean deleteById(int id);
 
     boolean update(Candidate candidate);
 
