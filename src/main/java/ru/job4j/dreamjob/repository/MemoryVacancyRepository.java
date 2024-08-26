@@ -23,27 +23,33 @@ public class MemoryVacancyRepository implements VacancyRepository {
         save(new Vacancy(0,
                         "Intern Java Developer",
                         "Набираем Intern Java Developer",
-                        LocalDateTime.of(2024, 8, 13, 10, 30)));
+                        LocalDateTime.of(2024, 8, 13, 10, 30),
+                        true));
         save(new Vacancy(0,
                         "Junior Java Developer",
                         "Ищем Junior Java Developer",
-                        LocalDateTime.of(2024, 7, 12, 11, 45)));
+                        LocalDateTime.of(2024, 7, 12, 11, 45),
+                        true));
         save(new Vacancy(0,
                         "Junior+ Java Developer",
                         "Мы молодая быстроразвивающаяся компания в поиске Junior+ Java Developer",
-                        LocalDateTime.of(2024, 7, 12, 11, 45)));
+                        LocalDateTime.of(2024, 7, 12, 11, 45),
+                        true));
         save(new Vacancy(0,
                         "Senior Java Developer",
                         "Ищем Senior Java Developer зп 400к",
-                        LocalDateTime.of(2024, 5, 6, 12, 40)));
+                        LocalDateTime.of(2024, 5, 6, 12, 40),
+                        true));
         save(new Vacancy(0,
                         "Middle+ Java Developer",
                         "Стартап в поиске Middle+ Java Developer",
-                        LocalDateTime.of(2024, 4, 16, 7, 18)));
+                        LocalDateTime.of(2024, 4, 16, 7, 18),
+                        true));
         save(new Vacancy(0,
                         "Senior Java Developer",
                         "В самый крупный банк России требуется Senior Java Developer",
-                        LocalDateTime.of(2024, 8, 15, 13, 26)));
+                        LocalDateTime.of(2024, 8, 15, 13, 26),
+                        true));
     }
 
     @Override
@@ -69,7 +75,8 @@ public class MemoryVacancyRepository implements VacancyRepository {
                 (id, oldVacancy) -> new Vacancy(oldVacancy.getId(),
                                                 vacancy.getTitle(),
                                                 vacancy.getDescription(),
-                                                vacancy.getCreationDate())) != null;
+                                                vacancy.getCreationDate(),
+                                                vacancy.getVisible())) != null;
     }
 
     @Override
