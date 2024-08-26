@@ -24,32 +24,38 @@ public class MemoryVacancyRepository implements VacancyRepository {
                         "Intern Java Developer",
                         "Набираем Intern Java Developer",
                         LocalDateTime.of(2024, 8, 13, 10, 30),
-                        true));
+                        true,
+                        1));
         save(new Vacancy(0,
                         "Junior Java Developer",
                         "Ищем Junior Java Developer",
                         LocalDateTime.of(2024, 7, 12, 11, 45),
-                        true));
+                        true,
+                        2));
         save(new Vacancy(0,
                         "Junior+ Java Developer",
                         "Мы молодая быстроразвивающаяся компания в поиске Junior+ Java Developer",
                         LocalDateTime.of(2024, 7, 12, 11, 45),
-                        true));
+                        true,
+                        3));
         save(new Vacancy(0,
                         "Senior Java Developer",
                         "Ищем Senior Java Developer зп 400к",
                         LocalDateTime.of(2024, 5, 6, 12, 40),
-                        true));
+                        true,
+                        1));
         save(new Vacancy(0,
                         "Middle+ Java Developer",
                         "Стартап в поиске Middle+ Java Developer",
                         LocalDateTime.of(2024, 4, 16, 7, 18),
-                        true));
+                        true,
+                        2));
         save(new Vacancy(0,
                         "Senior Java Developer",
                         "В самый крупный банк России требуется Senior Java Developer",
                         LocalDateTime.of(2024, 8, 15, 13, 26),
-                        true));
+                        true,
+                        3));
     }
 
     @Override
@@ -76,7 +82,8 @@ public class MemoryVacancyRepository implements VacancyRepository {
                                                 vacancy.getTitle(),
                                                 vacancy.getDescription(),
                                                 vacancy.getCreationDate(),
-                                                vacancy.getVisible())) != null;
+                                                vacancy.getVisible(),
+                                                vacancy.getCityId())) != null;
     }
 
     @Override

@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.job4j.dreamjob.model.Candidate;
 import ru.job4j.dreamjob.service.CandidateService;
+import ru.job4j.dreamjob.service.CityService;
 
 @Controller
 @RequestMapping("/candidates") /* Работать с кандидатами будем по URI /vacancies/** */
@@ -12,25 +13,17 @@ public class CandidateController {
 
     private final CandidateService candidateService;
 
-    public CandidateController(CandidateService candidateService) {
-        this.candidateService = candidateService;
-    }
+    private final CityService cityService;
 
-    @GetMapping
-    public String getAll(Model model) {
-        model.addAttribute("candidates", candidateService.findAll());
-        return "candidates/list";
+    public CandidateController(CandidateService candidateService, CityService cityService) {
+        this.candidateService = candidateService;
+        this.cityService = cityService;
     }
 
     @GetMapping("/create")
-    public String getCreationPage() {
+    public String getCreationPage(Model model) {
+        model.addAttribute("cities", cityService.findAll());
         return "candidates/create";
-    }
-
-    @PostMapping("/create")
-    public String create(@ModelAttribute Candidate candidate) {
-        candidateService.save(candidate);
-        return "redirect:/candidates";
     }
 
     @GetMapping("/{id}")
@@ -40,8 +33,21 @@ public class CandidateController {
             model.addAttribute("message", "Вакансия с указанным идентификатором не найдена");
             return "errors/404";
         }
+        model.addAttribute("cities", cityService.findAll());
         model.addAttribute("candidate", candidateOptional.get());
         return "candidates/one";
+    }
+
+    @GetMapping
+    public String getAll(Model model) {
+        model.addAttribute("candidates", candidateService.findAll());
+        return "candidates/list";
+    }
+
+    @PostMapping("/create")
+    public String create(@ModelAttribute Candidate candidate) {
+        candidateService.save(candidate);
+        return "redirect:/candidates";
     }
 
     @PostMapping("/update")
