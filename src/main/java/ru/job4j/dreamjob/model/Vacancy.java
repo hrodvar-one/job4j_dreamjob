@@ -17,16 +17,27 @@ public class Vacancy {
 
     private int cityId;
 
+    private int fileId;
+
     public Vacancy() {
     }
 
-    public Vacancy(int id, String title, String description, LocalDateTime creationDate, boolean isVisible, int cityId) {
+    public Vacancy(int id, String title, String description, LocalDateTime creationDate, boolean isVisible, int cityId, int fileId) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.creationDate = creationDate;
         this.visible = isVisible;
         this.cityId = cityId;
+        this.fileId = fileId;
+    }
+
+    public int getFileId() {
+        return fileId;
+    }
+
+    public void setFileId(int fileId) {
+        this.fileId = fileId;
     }
 
     public int getId() {

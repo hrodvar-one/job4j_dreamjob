@@ -25,37 +25,43 @@ public class MemoryVacancyRepository implements VacancyRepository {
                         "Набираем Intern Java Developer",
                         LocalDateTime.of(2024, 8, 13, 10, 30),
                         true,
-                        1));
+                        1,
+                        0));
         save(new Vacancy(0,
                         "Junior Java Developer",
                         "Ищем Junior Java Developer",
                         LocalDateTime.of(2024, 7, 12, 11, 45),
                         true,
-                        2));
+                        2,
+                        0));
         save(new Vacancy(0,
                         "Junior+ Java Developer",
                         "Мы молодая быстроразвивающаяся компания в поиске Junior+ Java Developer",
                         LocalDateTime.of(2024, 7, 12, 11, 45),
                         true,
-                        3));
+                        3,
+                        0));
         save(new Vacancy(0,
                         "Senior Java Developer",
                         "Ищем Senior Java Developer зп 400к",
                         LocalDateTime.of(2024, 5, 6, 12, 40),
                         true,
-                        1));
+                        1,
+                        0));
         save(new Vacancy(0,
                         "Middle+ Java Developer",
                         "Стартап в поиске Middle+ Java Developer",
                         LocalDateTime.of(2024, 4, 16, 7, 18),
                         true,
-                        2));
+                        2,
+                        0));
         save(new Vacancy(0,
                         "Senior Java Developer",
                         "В самый крупный банк России требуется Senior Java Developer",
                         LocalDateTime.of(2024, 8, 15, 13, 26),
                         true,
-                        3));
+                        3,
+                        0));
     }
 
     @Override
@@ -83,7 +89,8 @@ public class MemoryVacancyRepository implements VacancyRepository {
                                                 vacancy.getDescription(),
                                                 vacancy.getCreationDate(),
                                                 vacancy.getVisible(),
-                                                vacancy.getCityId())) != null;
+                                                vacancy.getCityId(),
+                                                vacancy.getFileId())) != null;
     }
 
     @Override
