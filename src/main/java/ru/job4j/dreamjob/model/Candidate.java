@@ -8,7 +8,7 @@ public class Candidate {
 
     public static final Map<String, String> COLUMN_MAPPING = Map.of(
             "id", "id",
-            "title", "title",
+            "name", "name",
             "description", "description",
             "creation_date", "creationDate",
             "city_id", "cityId",
