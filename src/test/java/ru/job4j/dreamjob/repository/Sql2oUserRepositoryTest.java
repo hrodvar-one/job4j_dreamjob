@@ -1,7 +1,5 @@
 package ru.job4j.dreamjob.repository;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.sql2o.Connection;
@@ -21,7 +19,6 @@ class Sql2oUserRepositoryTest {
 
     private Sql2o sql2o = new Sql2o("jdbc:h2:file:./testdb;DB_CLOSE_DELAY=-1", "", "");
 
-//    @BeforeAll
     @BeforeEach
     public void initRepositories() throws Exception {
         var properties = new Properties();
@@ -38,13 +35,6 @@ class Sql2oUserRepositoryTest {
 
         sql2oUserRepository = new Sql2oUserRepository(sql2o);
     }
-
-//    @BeforeEach
-//    public void cleanUp() {
-//        try (Connection con = sql2o.open()) {
-//            con.createQuery("TRUNCATE TABLE users").executeUpdate();
-//        }
-//    }
 
     @BeforeEach
     public void cleanUp() {
