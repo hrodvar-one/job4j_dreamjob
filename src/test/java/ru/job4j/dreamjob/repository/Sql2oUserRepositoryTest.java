@@ -3,7 +3,6 @@ package ru.job4j.dreamjob.repository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.sql2o.Connection;
-import org.sql2o.Sql2o;
 import ru.job4j.dreamjob.configuration.DatasourceConfiguration;
 import ru.job4j.dreamjob.model.User;
 
@@ -16,8 +15,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class Sql2oUserRepositoryTest {
 
     private static Sql2oUserRepository sql2oUserRepository;
-
-    private Sql2o sql2o = new Sql2o("jdbc:h2:file:./testdb;DB_CLOSE_DELAY=-1", "", "");
 
     @BeforeEach
     public void initRepositories() throws Exception {
@@ -33,14 +30,11 @@ class Sql2oUserRepositoryTest {
         var datasource = configuration.connectionPool(url, username, password);
         var sql2o = configuration.databaseClient(datasource);
 
-        sql2oUserRepository = new Sql2oUserRepository(sql2o);
-    }
-
-    @BeforeEach
-    public void cleanUp() {
         try (Connection con = sql2o.open()) {
             con.createQuery("TRUNCATE TABLE users").executeUpdate();
         }
+
+        sql2oUserRepository = new Sql2oUserRepository(sql2o);
     }
 
     @Test
