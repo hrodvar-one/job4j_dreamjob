@@ -25,11 +25,6 @@
                 </tr>
                 </thead>
                 <tbody>
-<!--                <tr th:each="candidate: ${candidates}">-->
-<!--                    <td th:text="${candidate.id}" />-->
-<!--                    <td th:text="${candidate.name}" />-->
-<!--                    <td th:text="${candidate.creationDate}"/>-->
-<!--                </tr>-->
                 <tr th:each="candidate: ${candidates}">
                     <td th:text="${candidate.id}" />
                     <td><a th:text="${candidate.name}" th:href="@{/candidates/{candidateId}(candidateId=${candidate.id})}"></a></td>
